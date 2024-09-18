@@ -24,6 +24,7 @@ const CardList: React.FC = () => {
   const [offset, setOffset] = useState(0);
   const [limit] = useState(10);
   const [hasMore, setHasMore] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   const triggerElement = useInfiniteScroll(() => {
     if (hasMore) {
@@ -32,11 +33,15 @@ const CardList: React.FC = () => {
   });
 
   useEffect(() => {
+    setMounted(true);
+  }, [])
+
+  useEffect(() => {
     const fetchCards = async () => {
       if (offset <= 50) {
         try {
           const response = await fetch(
-            `/api/dummyCards?offset=${offset}&limit=${limit}`
+            `localhost:3001/api/dummyCards?offset=${offset}&limit=${limit}`
           );
           const data: ApiResponse = await response.json();
           setCards((prevCards) => [...prevCards, ...data.data]);
@@ -47,15 +52,18 @@ const CardList: React.FC = () => {
       }
     };
 
-    fetchCards();
-  }, [offset, limit]);
+    if(mounted){
+        fetchCards();
+    }
+    
+  }, [offset, limit, mounted]);
 
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card) => (
           <Card
-            key={card.id}
+            key={card.id+`card`}
             image={card.image}
             title={card.title}
             description={card.description}
