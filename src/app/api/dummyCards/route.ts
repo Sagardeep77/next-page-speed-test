@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 type CardData = {
   id: number;
   image: string;
+  image2?:string,
   title: string;
   description: string;
   info: string;
@@ -16,6 +17,7 @@ const generateCards = (): CardData[] => {
     cards.push({
       id: i,
       image: `https://via.placeholder.com/300x200?text=Card+${i}`,
+      image2:`https://picsum.photos/300/200.webp?random=${i}`,
       title: `Card ${i}`,
       description: `This is the description for card ${i}.`,
       info: `Additional info about card ${i}.`,

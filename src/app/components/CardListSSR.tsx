@@ -5,6 +5,7 @@ import Card from './Card';
 type CardData = {
   id: number;
   image: string;
+  image2:string,
   title: string;
   description: string;
   info: string;
@@ -76,11 +77,13 @@ const CardListSSR: React.FC<CardListProps> = ({ initialCards, initialOffset }) =
           >
             <Card
               image={card.image}
+              image2={card.image2}
               title={card.title}
               description={card.description}
               info={card.info}
               buttonText={card.buttonText}
               onActionClick={() => alert(`Card with ID: ${card.id} clicked!`)}
+              lazyLoadImage={index > 1}
             />
           </div>
         ))}

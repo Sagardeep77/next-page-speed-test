@@ -6,6 +6,7 @@ import useInfiniteScroll from "@/app/hooks/useInfiniteScroll";
 type CardData = {
   id: number;
   image: string;
+  image2:string,
   title: string;
   description: string;
   info: string;
@@ -41,7 +42,7 @@ const CardList: React.FC = () => {
       if (offset <= 50) {
         try {
           const response = await fetch(
-            `localhost:3001/api/dummyCards?offset=${offset}&limit=${limit}`
+            `/api/dummyCards?offset=${offset}&limit=${limit}`
           );
           const data: ApiResponse = await response.json();
           setCards((prevCards) => [...prevCards, ...data.data]);
@@ -61,14 +62,16 @@ const CardList: React.FC = () => {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cards.map((card) => (
+        {cards.map((card, index) => (
           <Card
             key={card.id+`card`}
             image={card.image}
+            image2={card.image2}
             title={card.title}
             description={card.description}
             info={card.info}
             buttonText={card.buttonText}
+            lazyLoadImage={index > 1}
             // onActionClick={() => alert(`Card with ID: ${card.id} clicked!`)}
           />
         ))}
