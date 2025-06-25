@@ -3,19 +3,22 @@ import CardList from '@/app/components/CardList';
 import CardListSSR from './components/CardListSSR';
 import Script from 'next/script';
 import ScriptLoader from './components/ScriptLoader';
+import ImageUpload from './components/ImageUploadS3';
 // import { getServerSideProps } from './utils/getServerSideProps';
 
 const Home: React.FC = () => {
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Card List</h1>
-      <CardList />
+      <ImageUpload />
+      {/* <h1 className="text-3xl font-bold mb-6">Card List</h1> */}
+      {/* <CardList /> */}
       {/* <script src="/api/blockCpuScript"></script> */}
       {/* <Script src="/api/blockCpuScript" strategy="lazyOnload"/> */}
       {/* <ScriptLoader src="/api/blockCpuScript" /> */}
     </div>
   );
 };
+
 
 
 

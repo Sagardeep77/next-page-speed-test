@@ -16,7 +16,7 @@ const Card = ({ image, image2, title, description, info, buttonText, onActionCli
   <div className="bg-white shadow-md rounded-lg overflow-hidden max-w-sm">
 
         {/* images */}
-        <img src={image2} alt={title} className="w-full h-48 object-cover" />
+        {/* <img src={image2} alt={title} className="w-full h-48 object-cover" /> */}
         {/* <img src={'/assets/1.webp'}
  alt={title} className="w-full h-48 object-cover" /> */}
 
@@ -69,7 +69,7 @@ const Card = ({ image, image2, title, description, info, buttonText, onActionCli
 
         {/* eagerly load */}
 
-        {/* <div className="relative h-48 w-full">
+        <div className="relative h-48 w-full">
           <Image
             loading="eager"
             src={image2}
@@ -78,7 +78,7 @@ const Card = ({ image, image2, title, description, info, buttonText, onActionCli
             objectFit="cover"  // Ensure the image covers the container while preserving its aspect ratio
             className="rounded-t-lg"
           />
-        </div> */}
+        </div>
 
         
 
